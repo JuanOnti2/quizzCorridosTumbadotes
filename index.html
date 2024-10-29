@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz de Corridos Tumbados</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="app">
+        <h1>Quiz de Corridos Tumbados</h1>
+        <div v-if="!quizCompleted">
+            <div v-for="(question, index) in questions" :key="index">
+                <h3>{{ question.text }}</h3>
+                <div v-for="(option, i) in question.options" :key="i">
+                    <label>
+                        <input type="radio" :value="option" v-model="userAnswers[index]">
+                        {{ option }}
+                    </label>
+                </div>
+            </div>
+            <button @click="checkAnswers">Enviar Respuestas</button>
+        </div>
+        <div v-else>
+            <h2>Resultados</h2>
+            <p>Tu puntaje: {{ score }}/{{ questions.length }}</p>
+            <button @click="resetQuiz">Reiniciar Quiz</button>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+    <script src="script.js"></script>
+</body>
+</html>
