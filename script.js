@@ -1,6 +1,7 @@
 new Vue({
     el: '#app',
     data: {
+        userName: '',  // Añadido para almacenar el nombre del usuario
         questions: [
             {
                 text: "¿Quién es considerado el rey de los corridos tumbados?",
@@ -64,8 +65,10 @@ new Vue({
         },
         resetQuiz() {
             this.userAnswers = [];
+            this.userName = '';  // Reiniciar el nombre
             this.quizCompleted = false;
             this.score = 0;
         }
     }
 });
+
